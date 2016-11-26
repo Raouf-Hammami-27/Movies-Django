@@ -7,4 +7,4 @@ This is a simple solution for managing a movie's library developped using Django
 * Filtering movies by category
 * Add a movie to a favourite list
 * Template added
-* Exposing a rest Api using Django Rest api 
+* Exposing a rest Api using Django Rest Framework 
