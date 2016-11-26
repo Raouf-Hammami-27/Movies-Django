@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>List of Favorite</h1>    <br>
+<table class="table">
+    <tr>
+    <th>User</th>
+        <th>Titre</th>
+    <th>Date d'ajout</th>
+        <th>Comment</th>
+    </tr>
+{% for foo in Favoris  %}
+    <tr>
+        <td> {{ foo.auteur }}</td>
+        <td>  {{foo.film}}  </td>
+        <td>  {{foo.date_ajout}} </td>
+        <td>  {{foo.comment}} </td>
+
+    </tr>
+    {% empty %}
+    <tr>
+     <td>There's no Favoris </td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

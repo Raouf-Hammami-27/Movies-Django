@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1 class="text-primary">Details of Film</h1>
+<br>
+<ul class="list-group">
+
+    <li class="list-group-item-heading">
+        <img src="media/{{film.image}}" width="100px" class="thumbnail"/>
+        <h2>{{film.nom}}</h2>
+    </li>
+
+    <li class="list-group-item">
+        <p>{{film.genre.all|join:","}}</p>
+    </li>
+    <li class="list-group-item">
+        <p>{{film.auteur}}</p>
+    </li>
+    <li class="list-group-item">
+        <p>{{film.date_sortie}}</p>
+    </li>
+    <li class="list-group-item">
+        {% if film.disponible %}
+        <label class="label-success">Disponible</label>
+            {%  else %}
+            <label class="label-danger">Non Disponible</label>
+        {% endif %}
+    </li>
+
+</ul>
+
+<a href="{%  url 'Films-list' %}" > return</a>
+{% endblock %}

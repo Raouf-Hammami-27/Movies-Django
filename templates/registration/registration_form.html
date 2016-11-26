@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <form method="post" action=""  accept-charset="utf-8"> {% csrf_token %}
+    <fieldset >
+        <legend>All registration information is required</legend>
+
+        {% if form.errors %}
+        <p class="error">
+            {% if form.non_field_errors %}
+            {{ form.non_field_errors|join:" " }} <br />
+            {% endif %}
+            Please correct any errors to continue.
+        </p>
+        {% endif %}
+        <dl>
+            {% for field in form %}
+            <dt class="caps">{{ field.label_tag }} {% if field.errors %}
+                <span class="form-field-error">{{ field.errors.0 }}</span> {% endif %}
+            </dt>
+            <dd class="text">{{ field }}</dd>
+            {% endfor %}
+        </dl>
+        <div class="fieldset-submit-row">
+            <button class="positive button" type="submit">Register</button>
+        </div>
+    </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Account Confirmation{% endblock %}
+{% block account_content %}
+{% if account.is_active %}
+<p class="success">Your account has been activated.</p>
+<p><a href="{% url 'account-login' %}">Click here to login</a></p>
+{% else %}
+<p class="success">Your account registration has been confirmed and will be reviewed shortly.</p>
+{% endif %}
+{% endblock %}

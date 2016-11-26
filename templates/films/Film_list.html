@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>List of Available Films</h1>    <br>
+<table class="table">
+    <tr>
+    <th>Image</th>
+        <th>Titre</th>
+    <th>Genre</th>
+        <th>Auteur</th>
+        <th>Date de sortie</th>
+        <th>Disponilité</th>
+        <th>Actions</th>
+    </tr>
+{% for foo in Films  %}
+    <tr>
+        <td>   <a href="{%  url 'Film-detail' pk=foo.id %}"> <img src="media/{{ foo.image}}" width="100px" class="thumbnail"/></a></td>
+        <td>  <a href="{%  url 'Film-detail' pk=foo.id %}"> {{foo.nom}} </a> </td>
+        <td>  {{foo.genre.all|join:","}} </td>
+       <td>{{foo.auteur}}</td>
+        <td>{{foo.date_sortie}}</td>
+        {% if foo.disponible%}
+        <td><label class="label-success">Disponible</label></td>
+            {%  else %}
+            <td><label class="label-danger">Non Disponible</label></td>
+        {% endif %}
+    {% if user.is_authenticated and request.user.is_superuser  %}
+        <td><a href="{%  url 'Film-delete' pk=foo.id %}">Delete</a><br><a href="{%  url 'Film-update' pk=foo.id %}">Update</a><br><a href="{%  url 'Film-detail' pk=foo.id %}">Details</a>
+<br><a href="{%  url 'Favori-create' pk=foo.id%}" class="glyphicon glyphicon-star-empty">Ajouter aux favoris</a>
+            </td>
+
+    {% endif %}
+
+    </tr>
+    {% empty %}
+    <tr>
+     <td>There's no Films yet</td>
+    </tr>
+{% endfor %}
+</table>
+
+    {% if user.is_authenticated and request.user.is_superuser  %}
+<a href="{%  url 'Film-create' %}" class="btn-link"> Creer une nouvelle entrée</a>
+    {% endif %}
+{% endblock %}

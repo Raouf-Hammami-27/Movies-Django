@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+<h1>
+Create Film
+</h1>
+<form action="" method="post" enctype="multipart/form-data" class="form-group"> {% csrf_token %}
+{{ form.as_p }}
+    <input type="submit" value="Enregistrer" />
+    <input type="submit" href="{%  url 'Films-list' %}" value="Return" />
+
+</form>
+    </center>
+{% endblock %}

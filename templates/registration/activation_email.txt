@@ -1,0 +1,12 @@
+Thank you for registering at Bookings.
+
+To complete your registration, please confirm it here:
+<a href="http://{{site.domain }}/accounts/activate/{{activation_key}}"> lien vers le site </a>
+
+After completing your registration, you will be able to log into the site.
+
+Please note that your account registration will expire in {{ expiration_days }} days.
+
+Thank you, and enjoy!
+
+http://{{site.domain }}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>List of Available Genres</h1>    <br>
+<table class="table">
+    <tr>
+    <th>Nom</th>
+        <th>Films</th>
+    </tr>
+{% for foo in genres%}
+    <tr>
+        <td>  {{foo.nom}} </td>
+       <td>{{foo.film_set.all|join:','}}</td>
+
+    </tr>
+    {% empty %}
+    <tr>
+     <td>There's no Genres yet</td>
+    </tr>
+{% endfor %}
+</table>
+{#<ul>#}
+{#{% for t in genre %}#}
+{##}
+{#    <a href="{% url 'Book-tag' tag_id=t.id %}"><li>{{t}}({{t.book_set.all|length}})</li></a>#}
+{#{% endfor %}#}
+{##}
+{##}
+{#</ul>#}
+
+{% endblock %}
